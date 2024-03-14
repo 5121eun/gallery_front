@@ -23,7 +23,7 @@ export default function Gallery( { posts } : GalleryProps) {
     }
 
     return (
-        <div className="grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+        <div className="flex grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 m-5">
             {post_rendering(posts)}
         </div>
     )

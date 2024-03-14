@@ -34,3 +34,20 @@ export async function getPosts(page: number, tags: string[]): Promise<Post[]> {
         }
     }
 }
+
+export async function get_tags(): Promise<string[]> {
+    try {
+        const response = await client({
+            method: 'get',
+            url: `/post/posts/get_all_tags/`, 
+        });
+
+        return response.data.tags;
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            return [];
+        } else {
+            return [];
+        }
+    }
+}
