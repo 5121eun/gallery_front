@@ -12,21 +12,10 @@ import DivRow from "../../div-row";
 import Title from "../../title";
 
 interface PostDetailProps {
-    id: number;
+    post: Post | null;
 }
 
-export default function PostDetailForm({ id }: PostDetailProps){
-    const [ post, setPost] = useState<Post|null>(null);
-
-    useEffect(() => {
-        request_post(id);
-    }, [])
-
-    async function request_post(id: number) {
-        const post = await get_post(id);
-        setPost(post);
-    }
-
+export default async function PostDetailForm({ post }: PostDetailProps){
     return (
             <Container>
                     <DivRow className="justify-between">
