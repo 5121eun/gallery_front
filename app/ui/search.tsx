@@ -63,12 +63,12 @@ export default function Search({ onSearch }: SearchProps) {
                     focus && <div className="flex absolute w-full p-3 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" ref={divRef}>
                     {all_tags.map((tag) => {
                         if (value.length == 0) {
-                            return <p onClick={() => {
+                            return <p className="cursor-pointer" onClick={() => {
                                 setValue(tag)
                                 onSearch(tag)
                             }}># {tag}</p>
                         } else if(tag.includes(value)) {
-                            return <p onClick={() => {
+                            return <p className="cursor-pointer" onClick={() => {
                                 setValue(tag)
                                 onSearch(tag)
                             }}># {tag}</p>
