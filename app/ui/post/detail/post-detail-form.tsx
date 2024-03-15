@@ -3,8 +3,6 @@
 import Tags from "@/app/ui/post/tags";
 import { Post,  } from "@/app/lib/definitions";
 import Image from 'next/image'
-import { useEffect, useState } from "react";
-import { get_post } from "@/app/lib/actions";
 import Back from "@/app/ui/svg/back";
 import Edit from "@/app/ui/svg/edit";
 import Container from "@/app/ui/container";
