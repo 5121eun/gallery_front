@@ -1,32 +1,19 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, ChangeEvent } from "react";
 import Chip from "./chip";
 import { get_tags } from "@/app/lib/actions";
+import DivRow from "../div-row";
 
 interface TagsProps {
     old_tags: string[],
     readonly?: boolean
 }
 
-const color_list = [
-    "blue",
-    "red",
-    "green",
-    "yellow",
-    "indigo",
-    "purple",
-    "pink",
-]
-
-type Chip = {
-    name: string,
-    color: string
-}
-
 export default function Tags({ old_tags, readonly }: TagsProps) {
     const inputRef = useRef<HTMLInputElement>(null);
     const divRef = useRef<HTMLInputElement>(null);
+
     const [ value, setValue ] = useState("");
     const [ tags, setTags ] = useState<string[]>(old_tags)
     const [ all_tags, setAllTags ] = useState<string[]>([])
@@ -38,13 +25,6 @@ export default function Tags({ old_tags, readonly }: TagsProps) {
     async function requestTags() {
         let new_all_tags = await get_tags();
 
-        const tag_list: Chip[] = []
-        new_all_tags.map((tag, index) => {
-            tag_list.push({
-                name: tag,
-                color: color_list[index % color_list.length]
-            })
-        })
         setAllTags(new_all_tags)
     }
 
@@ -90,18 +70,18 @@ export default function Tags({ old_tags, readonly }: TagsProps) {
     }
 
     return (
-        <div className="w-full focus-within" onClick={() => {
+        <div className="w-full focus-within relative" onClick={() => {
             inputRef.current?.focus();
         }} tabIndex={1}>
             <div className="flex flex-row items-center">
                 {tags.map((t) => {
                     if (readonly) {
                         return (
-                            <Chip key={t} color={color_list[all_tags.indexOf(t) % color_list.length]}>{t}</Chip>
+                            <Chip key={t}>{t}</Chip>
                         )
                     } else {
                         return (
-                            <Chip key={t} handleClick_X={chipHandleClick_X} icon={true} color={color_list[all_tags.indexOf(t) % color_list.length]}>{t}</Chip>
+                            <Chip key={t} handleClick_X={chipHandleClick_X} icon={true}>{t}</Chip>
                         )
                     }
                 })}
@@ -115,26 +95,24 @@ export default function Tags({ old_tags, readonly }: TagsProps) {
                     onBlur={offFocus}/>
                 }
             </div>
-            {
-                !readonly && <div className="z-10 flex  absolute w-full opacity-0 flex-col space-y-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" ref={divRef}>
-                    {all_tags.map((e, index) => {
-                        if (!tags.includes(e)) {
-                            if (value.length == 0) {
-                                return <Chip key={e} handleClick={chipHandleClick} color={color_list[index % color_list.length]}>{e}</Chip>
-                            } else if(e.includes(value)) {
-                                return <Chip key={e} handleClick={chipHandleClick} color={color_list[index % color_list.length]}>{e}</Chip>
-                            }
+            <div className="z-10 flex absolute w-full p-3 flex-col space-y-3 opacity-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" ref={divRef}>
+                {
+                    value.length > 0 && !all_tags.includes(value) &&
+                    <DivRow>
+                        태그생성:    
+                        <Chip key={value} handleClick={chipHandleClick}>{value}</Chip>
+                    </DivRow>
+                }
+                {all_tags.map((tag) => {
+                    if (!tags.includes(tag)) {
+                        if (value.length == 0) {
+                            return <Chip key={tag} handleClick={chipHandleClick}>{tag}</Chip>
+                        } else if(tag.includes(value)) {
+                            return <Chip key={tag} handleClick={chipHandleClick}>{tag}</Chip>
                         }
-                    })}
-                    { (divRef?.current?.children.length != 0 && divRef?.current?.children[0].tagName != "SPAN") && value.length > 0 &&
-                        <p>
-                            태그생성: 
-                            <Chip key={value} handleClick={chipHandleClick} color={color_list[0]}>{value}</Chip>
-                        </p>
                     }
-                    <p></p>
-                </div>
-            }
+                })}
+            </div>
         </div>
     )
 }
