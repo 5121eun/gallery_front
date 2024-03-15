@@ -17,13 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`min-h-screen  ${inter.className} p-10 text-gray-500 dark:text-gray-300`}>
-        <div className="w-full">
+      <body className={`min-h-screen  ${inter.className} space-y-10 p-10 text-gray-500 dark:text-gray-300`}>
           <TopNav/>
-        </div>
-        <div className="w-full">
           {children}
-        </div>
       </body>
     </html>
   );

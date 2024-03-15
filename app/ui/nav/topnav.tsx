@@ -4,7 +4,7 @@ import DivRow from "../div-row"
 
 export default function TopNav() {
     return (
-        <div className="flex flex-col w-full p-10">
+        <div className="flex flex-col w-full">
             <div className="flex flex-row justify-between items-end">
                 <Logo />
                 <NavLinks />
