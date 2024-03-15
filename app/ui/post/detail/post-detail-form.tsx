@@ -28,10 +28,10 @@ export default function PostDetailForm({ id }: PostDetailProps){
 
     return (
             <Container className="flex flex-col">
-                    <div className="flex justify-between items-center">
+                    <DivRow className="justify-between">
                         <Back />
                         <Edit />
-                    </div>
+                    </DivRow>
                 {post && 
                     <div className="space-y-1 mt-5">
                         <DivRow>
