@@ -21,7 +21,7 @@ export default function RootLayout({
         <div className="w-full">
           <TopNav/>
         </div>
-        <div className="w-full">
+        <div className="w-full min-h-screen">
           {children}
         </div>
       </body>

@@ -2,7 +2,7 @@ import LoginForm from "@/app/ui/account/login/loginform";
 
 export default function Page() {
     return (
-        <main>
+        <main className="flex justify-center">
             <LoginForm />
         </main>
     )

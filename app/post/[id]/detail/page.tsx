@@ -4,7 +4,7 @@ export default function Page({ params }: { params: {id: string} }) {
     const id = params.id;
 
     return (
-        <main>
+        <main className="flex justify-center">
             <PostDetailForm id={Number(id)}/>
         </main>
     )

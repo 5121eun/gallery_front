@@ -2,7 +2,7 @@ import JoinForm from "@/app/ui/account/join/joinform";
 
 export default function Page() {
     return (
-        <main>
+        <main className="flex justify-center">
             <JoinForm />
         </main>
     )
