@@ -140,7 +140,7 @@ export async function getPosts(page: number, tags: string | undefined): Promise<
     try {
         const response = await client({
             method: 'get',
-            url: '/post/posts/', 
+            url: '/post/', 
             params: {
                 page: page,
                 tags: tags
@@ -164,7 +164,7 @@ export async function get_post(id: number): Promise<Post|null> {
     try {
         const response = await client({
             method: 'get',
-            url: `/post/posts/${id}/`, 
+            url: `/post/${id}/`, 
         });
 
         return response.data;
@@ -182,7 +182,7 @@ export async function create_post(state: any, formData: FormData): Promise<Serve
     try {
         const response = await client({
             method: 'post',
-            url: '/post/posts/',
+            url: '/post/',
             data: formData
         });
 
@@ -211,7 +211,7 @@ export async function get_tags(): Promise<string[]> {
     try {
         const response = await client({
             method: 'get',
-            url: `/post/posts/get_all_tags/`, 
+            url: `/post/get_all_tags/`, 
         });
 
         return response.data.tags;
