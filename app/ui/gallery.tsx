@@ -10,9 +10,9 @@ interface GalleryProps {
 export default function Gallery( { posts } : GalleryProps) {
     const post_rendering = (posts: Post[]) => {
         const result = [];
-        for (let i = 0 ; i < 7 ; i++) {
+        for (let i = 0 ; i < 4 ; i++) {
             result.push(<div key={i} className="grid gap-4">
-                {posts.slice(i * 3, (i * 3) + 3).map((post) => {
+                {posts.slice(i * 4, (i * 4) + 4).map((post) => {
                     return (
                         <Card key={post.id}  post={post} />
                     )
