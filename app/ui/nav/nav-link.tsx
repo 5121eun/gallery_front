@@ -16,7 +16,7 @@ export default function NavLinks() {
                 // if login show upload and logout otherwise show login
                 typeof window !== 'undefined' && localStorage.getItem("login") != null?
                 <>
-                    <TopLink name="upload" href="/upload" />
+                    <TopLink name="create" href="/post/create" />
                     <TopLink name="Logout" href="#" onClick={() => rqeuestLogout()} />
                 </> :
                 <TopLink name="Login" href="/account/login" />

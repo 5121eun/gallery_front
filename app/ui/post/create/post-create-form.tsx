@@ -1,0 +1,46 @@
+"use client"
+
+import Tags from "@/app/ui/post/tags";
+import DropZone from "../dropzone";
+import { create_post } from "@/app/lib/actions";
+import { useFormState } from "react-dom";
+import { ServerResponse } from "@/app/lib/definitions";
+import Button from "@/app/ui/button";
+
+export default function PostCreateForm(){
+    const [ response, formAction] = useFormState(requestCreatePost, null);
+
+    async function requestCreatePost(state: any, formData: FormData): Promise<ServerResponse>{
+        
+        formData.getAll('tags[]').map((tag, index) => {
+            formData.append(`tags[${index}]`, tag)
+        })
+        const response = await create_post(state, formData);
+        
+        if (response?.status == 200) {
+            console.log("success")
+        }
+
+        return response;
+    }
+
+    return (
+        <div className="flex flex-col w-full">
+                <form className="space-y-6" action={formAction} encType="multipart/form-data">
+                    <div className="space-y-1 mt-5">
+                        <div className="flex flex-row items-center">
+                            <label className="w-1/12 text-gray-500 dark:text-gray-400">태그:</label>
+                            <Tags old_tags={[]}/>
+                        </div>
+                        <div className="flex flex-row justify-center">
+                            <div className="min-w-1/12"></div>
+                            <DropZone />
+                        </div>
+                        <div className="w-full text-center">
+                            <Button className="w-10/12 m-auto" type="submit">업로드</Button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    )
+}

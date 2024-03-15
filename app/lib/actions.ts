@@ -162,6 +162,53 @@ export async function getPosts(page: number, tags: string[]): Promise<Post[]> {
     }
 }
 
+export async function get_post(id: number): Promise<Post|null> {
+    try {
+        const response = await client({
+            method: 'get',
+            url: `/post/posts/${id}/`, 
+        });
+
+        return response.data;
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            return null;
+        } else {
+            return null;
+        }
+    }
+}
+
+export async function create_post(state: any, formData: FormData): Promise<ServerResponse> {
+    
+    try {
+        const response = await client({
+            method: 'post',
+            url: '/post/posts/',
+            data: formData
+        });
+
+        return {
+            message: response.data,
+            status: response.status
+        }
+
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            return {
+                message: error.response?.data,
+                status: error.response?.status
+            }
+        } else {
+            return {
+                message: "Unknown Error",
+                status: 400
+            }
+        }
+
+    }
+}
+
 export async function get_tags(): Promise<string[]> {
     try {
         const response = await client({

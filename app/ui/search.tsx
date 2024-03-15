@@ -2,7 +2,7 @@
 
 import { get_tags } from "@/app/lib/actions";
 import { useEffect, useRef, useState } from "react";
-import SearchIcon from "./svg/search_icon";
+import SearchIcon from "./svg/search-icon";
 
 interface SearchProps {
     onSearch: (value: string) => void;

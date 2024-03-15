@@ -9,7 +9,7 @@ interface CardProps  {
 export default function Card({ post } : CardProps) {
     return (
       <Link
-        href={`/dashboard/post/${post.id}/detail`}>
+        href={`/post/${post.id}/detail`}>
         <Image 
             src={post.image}
             width={560}
