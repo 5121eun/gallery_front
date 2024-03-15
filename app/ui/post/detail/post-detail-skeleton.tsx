@@ -1,7 +1,6 @@
 "use client"
 
 import Back from "@/app/ui/svg/back";
-import Edit from "@/app/ui/svg/edit";
 import Container from "@/app/ui/container";
 import DivRow from "../../div-row";
 import Title from "../../title";
