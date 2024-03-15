@@ -26,10 +26,8 @@ export default function Home() {
     }
 
     return (
-        <main className="flex min-h-screen flex-col space-y-5">
-            {/* <div> */}
-              <Search onSearch={handleSearch}/>
-            {/* </div> */}
+        <main className="flex flex-col space-y-5 items-center">
+            <Search onSearch={handleSearch}/>
             <Gallery posts={posts}/>
         </main>
     );
