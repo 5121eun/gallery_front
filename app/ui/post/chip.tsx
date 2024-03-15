@@ -15,11 +15,13 @@ export default function Chip({ children, icon, color, handleClick_X, handleClick
             {children}
             {
                 icon &&
-                <button type="button" className="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300" data-dismiss-target={`#badge-dismiss-${color}`} aria-label="Remove" onClick={handleClick_X}>
-                    <X />
-                </button>
+                <>
+                    <button type="button" className="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300" data-dismiss-target={`#badge-dismiss-${color}`} aria-label="Remove" onClick={handleClick_X}>
+                        <X />
+                    </button>
+                    <input type="text" className="hidden" name="tags[]" value={children} readOnly/>
+                </>
             }
-            <input type="text" className="hidden" name="tags[]" value={children} readOnly/>
         </span>
     )
 }
