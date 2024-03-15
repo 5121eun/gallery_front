@@ -28,7 +28,7 @@ export default function PostCreateForm(){
     }
 
     return (
-            <form className="space-y-6" action={formAction} encType="multipart/form-data">
+            <form action={formAction} encType="multipart/form-data">
                 <Container>
                     <Title>Post Create</Title>
                     <DivRow>
@@ -36,7 +36,7 @@ export default function PostCreateForm(){
                             <Tags old_tags={[]}/>
                     </DivRow>
                     <DropZone />
-                    <Button className="w-10/12" type="submit">업로드</Button>
+                    <Button className="w-full" type="submit">업로드</Button>
                 </Container>
             </form>
     )

@@ -30,4 +30,13 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .w-720 {
+    width: 720px
+  }
+  
+  .h-480 {
+    height: 480px
+  }
+
 }

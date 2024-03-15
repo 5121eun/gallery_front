@@ -41,10 +41,10 @@ export default function DropZone(){
     }
 
     return (
-        <div className="w-full items-center justify-center ">
+        <div className="w-720 h-480 items-center justify-center ">
             {
                 image == null ?
-                <label htmlFor="dropzone-file" className="m-auto flex flex-col w-10/12 h-4/6 items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                <label htmlFor="dropzone-file" className="m-auto flex flex-col w-full h-full items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
                 onDragEnter={handleDragOver}>
@@ -64,7 +64,7 @@ export default function DropZone(){
                         <Image 
                             src={image}
                             width={720}
-                            height={560}
+                            height={480}
                             alt="image"
                         />
                         <input id="dropzone-file" type="file" name="image" className="hidden" ref={inputRef} onChange={handleChange}/>
