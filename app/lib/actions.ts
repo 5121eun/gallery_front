@@ -31,6 +31,47 @@ const JoinSchema = UserSchema.extend({
     ]
 })
 
+export async function join(formData: FormData): Promise<ServerResponse> {
+    
+    try {
+        const { username, email, password, password_check } = JoinSchema.parse({
+            username: formData.get('username'),
+            email: formData.get('email'),
+            password: formData.get('password'),
+            password_check: formData.get('password_check')
+        });
+
+        const response = await client({
+            method: 'post',
+            url: '/account/users/',
+            data: {
+                username: username,
+                email: email,
+                password: password
+            }
+        });
+
+        return {
+            message: "회원가입 성공",
+            status: response.status
+        }
+
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            return {
+                message: error.response?.data.username[0],
+                status: error.response?.status
+            }
+        } else {
+            return {
+                message: "Unknown Error",
+                status: 400
+            }
+        }
+
+    }
+}
+
 export async function login(formData: FormData): Promise<ServerResponse>{
     const { username, password } = LoginSchema.parse({
         username: formData.get('username'),
