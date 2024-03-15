@@ -3,7 +3,7 @@ import NavLinks from "./nav-link"
 
 export default function TopNav() {
     return (
-        <div className="flex flex-row justify-between items-center m-5 ">
+        <div className="flex flex-row justify-between items-center p-5 ">
             <Logo />
             <NavLinks />
         </div>
