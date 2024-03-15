@@ -5,3 +5,8 @@ export type Post = {
     image: string;
     tags: string[];
 }
+
+export type ServerResponse = {
+    message: string
+    status: number | undefined
+}

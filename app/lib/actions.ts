@@ -1,6 +1,7 @@
 import axios, { AxiosError } from 'axios';
-import { Post } from './definitions';
+import { Post, ServerResponse } from './definitions';
 
+import { z } from 'zod';
 import qs from 'qs';
 
 const client = axios.create({
@@ -10,6 +11,91 @@ const client = axios.create({
     withXSRFToken: true,
     withCredentials: true,
 })
+
+const UserSchema = z.object({
+    username: z.string().min(3),
+    email: z.string().email(),
+    password: z.string().min(3)
+});
+
+const LoginSchema = UserSchema.omit({ email: true });
+
+const JoinSchema = UserSchema.extend({
+    password_check: z.string().min(3)
+}).refine((value) => {
+    return value.password == value.password_check
+}, {
+    message: "password not same",
+    path: [
+        "password_check"
+    ]
+})
+
+export async function login(formData: FormData): Promise<ServerResponse>{
+    const { username, password } = LoginSchema.parse({
+        username: formData.get('username'),
+        password: formData.get('password')
+    });
+
+    try {
+        const response = await client({
+            method: 'post',
+            url: '/account/login',
+            data: {
+                username: username,
+                password: password
+            }
+        });
+
+        localStorage.setItem("login", String(true));
+
+        return {
+            message: username,
+            status: 200
+        }
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            return {
+                message: error.response?.data.message,
+                status: error.response?.status
+            }
+        } else {
+            return {
+                message: "Unknown Error",
+                status: 400
+            }
+        }
+    }
+}
+
+export async function logout(): Promise<ServerResponse>{
+
+    try {
+        const response = await client({
+            method: 'get',
+            url: '/account/logout',
+        });
+
+        localStorage.removeItem("login")
+
+        return {
+            message: response.data,
+            status: 200
+        }
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            return {
+                message: error.response?.data.message,
+                status: error.response?.status
+            }
+        } else {
+            return {
+                message: "Unknown Error",
+                status: 400
+            }
+        }
+    }
+}
 
 export async function getPosts(page: number, tags: string[]): Promise<Post[]> {
     try {

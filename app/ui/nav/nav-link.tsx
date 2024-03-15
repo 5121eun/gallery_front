@@ -1,7 +1,13 @@
 "use client"
 
 import TopLink from "./top-link";
+import { logout } from "@/app/lib/actions"
+
 export default function NavLinks() {
+    async function rqeuestLogout() {
+        logout()
+        localStorage.removeItem("login")
+    }
 
     return (
         <div className="flex flex-row">
@@ -11,9 +17,9 @@ export default function NavLinks() {
                 typeof window !== 'undefined' && localStorage.getItem("login") != null?
                 <>
                     <TopLink name="upload" href="/upload" />
-                    <TopLink name="Logout" href="/logout" />
+                    <TopLink name="Logout" href="#" onClick={() => rqeuestLogout()} />
                 </> :
-                <TopLink name="Login" href="/login" />
+                <TopLink name="Login" href="/account/login" />
             }
         </div>
     )

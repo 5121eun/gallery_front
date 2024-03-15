@@ -2,15 +2,16 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-interface TopLinkProps {
+interface TopLinkProps extends React.HTMLAttributes<HTMLElement>{
     name: string;
     href: string;
 }
-export default function TopLink({ name, href }: TopLinkProps) {
+export default function TopLink({ name, href, ...rest }: TopLinkProps) {
     const pathname = usePathname();
     
     return (
         <Link 
+            {...rest}
             key={name}
             href={href}
             className={clsx(
