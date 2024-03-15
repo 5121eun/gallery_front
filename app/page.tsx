@@ -16,13 +16,14 @@ export default function Home() {
 
     // call getPosts api
     async function requestPosts(page: number, tags: string[]) {
+        console.log(tags)
         const posts = await getPosts(page, tags);
         setPosts(posts);
       }
     
     // call getPosts api with search value
     function handleSearch(value: string) {
-        requestPosts(1, value.split(', '));        
+        requestPosts(1, value.length < 1? []: value.split(', '));        
     }
 
     return (
