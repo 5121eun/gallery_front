@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { ServerResponse } from "@/app/lib/definitions";
 import Container from "../../container";
 import Button from "../../button";
+import Title from "../../title";
 
 export default function LoginForm() {
     const [ response, formAction] = useFormState(requestLogin, null);
@@ -23,6 +24,7 @@ export default function LoginForm() {
 
     return (
         <Container className="flex">
+            <Title>Login</Title>
             <form className="space-y-6" action={formAction}>
                 <Input name="username" placeholder="User Name" status={response != null? false : undefined}/>    
                 <Input type="password" name="password" placeholder="password" message={response?.message} status={response != null? false : undefined}/>

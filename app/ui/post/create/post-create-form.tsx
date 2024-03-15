@@ -8,6 +8,7 @@ import { ServerResponse } from "@/app/lib/definitions";
 import Button from "@/app/ui/button";
 import Container from "@/app/ui/container";
 import DivRow from "@/app/ui/div-row";
+import Title from "@/app/ui/title";
 
 export default function PostCreateForm(){
     const [ response, formAction] = useFormState(requestCreatePost, null);
@@ -29,6 +30,7 @@ export default function PostCreateForm(){
     return (
             <form className="space-y-6" action={formAction} encType="multipart/form-data">
                 <Container>
+                    <Title>Post Create</Title>
                     <DivRow>
                         <label className="w-1/12 text-gray-500 dark:text-gray-400">태그:</label>
                             <Tags old_tags={[]}/>

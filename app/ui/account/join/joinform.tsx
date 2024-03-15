@@ -8,6 +8,7 @@ import { join } from "@/app/lib/actions";
 import { redirect } from "next/navigation";
 import { ServerResponse } from "@/app/lib/definitions";
 import Container from "@/app/ui/container";
+import Title from "../../title";
 
 export default function JoinForm() {
     const [ response, formAction] = useFormState(requestJoin, null);
@@ -24,6 +25,7 @@ export default function JoinForm() {
 
     return (
         <Container>
+            <Title>Join</Title>
             <form action={formAction}>
                 <Input name="username" placeholder="User Name" message={response == null? "사용자 이름을 3자 이상 입력해 주세요." : response?.message} status={response != null? false : undefined} />
                 <Input type="email" name="email" placeholder="email" message="Email 주소를 입력해 주세요."/>
