@@ -136,7 +136,7 @@ export async function logout(): Promise<ServerResponse>{
     }
 }
 
-export async function getPosts(page: number, tags: string[]): Promise<Post[]> {
+export async function getPosts(page: number, tags: string | undefined): Promise<Post[]> {
     try {
         const response = await client({
             method: 'get',
