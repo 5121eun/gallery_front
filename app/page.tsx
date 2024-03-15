@@ -16,7 +16,6 @@ export default function Home() {
 
     // call getPosts api
     async function requestPosts(page: number, tags: string[]) {
-        console.log(tags)
         const posts = await getPosts(page, tags);
         setPosts(posts);
       }
