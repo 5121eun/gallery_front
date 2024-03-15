@@ -30,7 +30,7 @@ export default function LoginForm() {
                 <div>
                     <Input type="password" name="password" placeholder="password" message={response?.message} status={response != null? false : undefined}/>
                 </div>
-                <Button type="submit">Login</Button>
+                <Button type="submit" className="w-full">Login</Button>
                 <div className="text-sm font-medium">
                     Not registered? <a href="/account/join" className="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
                 </div>

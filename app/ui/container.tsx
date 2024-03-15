@@ -9,8 +9,8 @@ export default function Container({ children, className, ...rest }: ContainerPro
         <div
             {...rest}
             className={clsx(
-                'p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700',
-                className
+                className,
+                'flex flex-col p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700',
             )}
         >
             {children}
