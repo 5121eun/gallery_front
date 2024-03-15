@@ -9,7 +9,8 @@ interface SearchProps {
 }
 
 export default function Search({ onSearch }: SearchProps) {
-    const [ tags, setTags ] = useState<string[]>([])
+    const [ all_tags, setAllTags ] = useState<string[]>([])
+    const [ focus, setFocus ] = useState(false)
     const [ value, setValue ] = useState("")
 
     const divRef = useRef<HTMLInputElement>(null);
@@ -20,24 +21,31 @@ export default function Search({ onSearch }: SearchProps) {
 
     async function requestTags() {
         let new_all_tags = await get_tags();
-        setTags(new_all_tags)
+        setAllTags(new_all_tags)
     }
 
     function onFocus () {
         if (divRef?.current) {
-            divRef.current.style.opacity = "100";
-        } 
+            divRef.current.style.visibility = "visible";
+            
+        }
+        setFocus(true)
     }
 
     function offFocus() {
-        if (divRef?.current) {
-            divRef.current.style.opacity = "0";
-        }
+        setTimeout(() => {
+            if (divRef?.current) {
+                divRef.current.style.visibility = "hidden";
+                
+            }
+            setFocus(false)
+        }, 100)
     }
 
     return (
-            <div>
-                <div className="relative w-11/12 ms-5">
+            <div className="w-10/12 focus-within relative" 
+            onBlur={offFocus} tabIndex={1}>
+                <div className="relative w-full">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <SearchIcon />
                     </div>
@@ -48,18 +56,25 @@ export default function Search({ onSearch }: SearchProps) {
                         value={value} 
                         onChange={(e) => setValue(e.target.value)} 
                         onFocus={onFocus}
-                        onBlur={offFocus}
                         required />
                     <button onClick={() => onSearch(value)} className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
                 {
-                    <div className="z-10 flex absolute opacity-0 w-11/12 p-3 ms-5 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" ref={divRef}>
-                        {tags.map((tag) => {
-                            if (tag.includes(value)) {
-                                return <p onClick={() => setValue(`${value.length>0? value+', ': ''}${tag}`)}># {tag}</p>
-                            }
-                        })}
-                    </div>
+                    focus && <div className="flex absolute w-full p-3 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" ref={divRef}>
+                    {all_tags.map((tag) => {
+                        if (value.length == 0) {
+                            return <p onClick={() => {
+                                setValue(tag)
+                                onSearch(tag)
+                            }}># {tag}</p>
+                        } else if(tag.includes(value)) {
+                            return <p onClick={() => {
+                                setValue(tag)
+                                onSearch(tag)
+                            }}># {tag}</p>
+                        }
+                    })}
+                </div>
                 }
             </div>
     )
