@@ -27,13 +27,13 @@ export default function PostDetailForm({ id }: PostDetailProps){
     }
 
     return (
-            <Container className="flex flex-col">
+            <Container>
                     <DivRow className="justify-between">
                         <Back />
                         <Edit />
                     </DivRow>
                 {post && 
-                    <div className="space-y-1 mt-5">
+                <>
                         <DivRow>
                             <label className="w-1/12">날짜:</label>
                             <p>{post.date}</p>
@@ -49,7 +49,7 @@ export default function PostDetailForm({ id }: PostDetailProps){
                             className="hover:opacity-50"
                             alt="image"
                             />
-                    </div>
+                            </>
                 }
             </Container>
     )
