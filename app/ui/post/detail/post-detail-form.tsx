@@ -33,7 +33,7 @@ export default function PostDetailForm({ id }: PostDetailProps){
                         <Edit />
                     </DivRow>
                 {post && 
-                <>
+                    <>
                         <DivRow>
                             <label className="w-1/12">날짜:</label>
                             <p>{post.date}</p>
@@ -49,7 +49,7 @@ export default function PostDetailForm({ id }: PostDetailProps){
                             className="hover:opacity-50"
                             alt="image"
                             />
-                            </>
+                    </>
                 }
             </Container>
     )
