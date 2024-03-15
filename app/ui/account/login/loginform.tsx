@@ -24,12 +24,8 @@ export default function LoginForm() {
     return (
         <Container className="flex">
             <form className="space-y-6" action={formAction}>
-                <div>
-                    <Input name="username" placeholder="User Name" status={response != null? false : undefined}/>    
-                </div>
-                <div>
-                    <Input type="password" name="password" placeholder="password" message={response?.message} status={response != null? false : undefined}/>
-                </div>
+                <Input name="username" placeholder="User Name" status={response != null? false : undefined}/>    
+                <Input type="password" name="password" placeholder="password" message={response?.message} status={response != null? false : undefined}/>
                 <Button type="submit" className="w-full">Login</Button>
                 <div className="text-sm font-medium">
                     Not registered? <a href="/account/join" className="text-blue-700 hover:underline dark:text-blue-500">Create account</a>

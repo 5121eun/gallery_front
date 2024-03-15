@@ -10,7 +10,7 @@ export default function Container({ children, className, ...rest }: ContainerPro
             {...rest}
             className={clsx(
                 className,
-                'flex flex-col p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700',
+                'flex flex-col space-y-3 p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700',
             )}
         >
             {children}
