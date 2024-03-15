@@ -5,9 +5,10 @@ import { Post,  } from "@/app/lib/definitions";
 import Image from 'next/image'
 import { useEffect, useState } from "react";
 import { get_post } from "@/app/lib/actions";
-import Chip from "@/app/ui/post/chip";
 import Back from "@/app/ui/svg/back";
 import Edit from "@/app/ui/svg/edit";
+import Container from "@/app/ui/container";
+import DivRow from "../../div-row";
 
 interface PostDetailProps {
     id: number;
@@ -26,36 +27,30 @@ export default function PostDetailForm({ id }: PostDetailProps){
     }
 
     return (
-            <div 
-                className="flex flex-col w-full">
-                    <div className="flex flex-row items-center">
+            <Container className="flex flex-col">
+                    <div className="flex justify-between items-center">
                         <Back />
-                        <div className="ml-auto">
-                            <Edit />
-                        </div>
+                        <Edit />
                     </div>
                 {post && 
                     <div className="space-y-1 mt-5">
-                        <div className="flex flex-row items-center">
-                            <label className="w-1/12 text-gray-500 dark:text-gray-400">날짜:</label>
-                            <p className="text-gray-500 dark:text-gray-400">{post.date}</p>
-                        </div>
-                        <div className="flex flex-row items-center">
-                            <label className="w-1/12 text-gray-500 dark:text-gray-400">태그:</label>
+                        <DivRow>
+                            <label className="w-1/12">날짜:</label>
+                            <p>{post.date}</p>
+                        </DivRow>
+                        <DivRow>
+                            <label className="w-1/12">태그:</label>
                             <Tags old_tags={post.tags} readonly={true}/>
-                        </div>
-                        <div className="flex flex-row items-center">
-                            <div className="min-w-1/12"></div>
-                            <Image 
-                                src={post.image}
-                                width={720}
-                                height={560}
-                                className="h-auto max-w-full hover:opacity-50"
-                                alt="image"
+                        </DivRow>
+                        <Image 
+                            src={post.image}
+                            width={720}
+                            height={560}
+                            className="hover:opacity-50"
+                            alt="image"
                             />
-                        </div>
                     </div>
                 }
-            </div>
+            </Container>
     )
 }
