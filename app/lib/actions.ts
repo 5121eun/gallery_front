@@ -88,10 +88,8 @@ export async function login(formData: FormData): Promise<ServerResponse>{
             }
         });
 
-        localStorage.setItem("login", String(true));
-
         return {
-            message: username,
+            message: "",
             status: 200
         }
     } catch (error: unknown) {

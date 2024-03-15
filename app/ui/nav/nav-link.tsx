@@ -7,14 +7,17 @@ export default function NavLinks() {
     async function rqeuestLogout() {
         logout()
         localStorage.removeItem("login")
+        window.location.reload()
     }
+
+    const login = localStorage.getItem("login")
 
     return (
         <div className="flex flex-row">
             <TopLink name="Main" href="/" />
             {
-                // if login show upload and logout otherwise show login
-                typeof window !== 'undefined' && localStorage.getItem("login") != null?
+                // if login show upload and logout, otherwise show login
+                login  != null?
                 <>
                     <TopLink name="create" href="/post/create" />
                     <TopLink name="Logout" href="#" onClick={() => rqeuestLogout()} />
