@@ -9,6 +9,7 @@ import Button from "@/app/ui/button";
 import Container from "@/app/ui/container";
 import DivRow from "@/app/ui/div-row";
 import Title from "@/app/ui/title";
+import { redirect } from "next/navigation";
 
 export default function PostCreateForm(){
     const [ response, formAction] = useFormState(requestCreatePost, null);
@@ -20,8 +21,8 @@ export default function PostCreateForm(){
         })
         const response = await create_post(state, formData);
         
-        if (response?.status == 200) {
-            console.log("success")
+        if (response?.status == 201) {
+            redirect(`/post/${response.message}/detail`)
         }
 
         return response;

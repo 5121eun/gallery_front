@@ -187,7 +187,7 @@ export async function create_post(state: any, formData: FormData): Promise<Serve
         });
 
         return {
-            message: response.data,
+            message: response.data.id,
             status: response.status
         }
 

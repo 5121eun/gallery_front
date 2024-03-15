@@ -7,8 +7,6 @@ export default function DropZone(){
     const [ image, setImage ] = useState<string | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    let fileReader = new FileReader();
-
     function handleDrop(event: React.DragEvent) {
         event.preventDefault();
         const files = event.dataTransfer.files;
