@@ -1,33 +1,48 @@
 "use client"
 
-import { useFormState } from "react-dom";
+import { useForm } from 'react-hook-form';
 import Input from "../../input";
-import { login } from "@/app/lib/actions"
-import { ServerResponse } from "@/app/lib/definitions";
+import { LoginSchema, login, loginObject } from "@/app/lib/actions"
 import Container from "../../container";
 import Button from "../../button";
 import Title from "../../title";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+
 
 export default function LoginForm() {
-    const [ response, formAction] = useFormState(requestLogin, null);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm({
+        resolver: zodResolver(LoginSchema),
+      });
+      const [ response, setResponse ] = useState("")
+      
 
-    async function requestLogin(state: any, formData: FormData): Promise<ServerResponse>{
-        const response = await login(formData);
+    async function requestLogin(params: loginObject) {
+        const response = await login(params);
         
         if (response?.status == 200) {
             localStorage.setItem("login", String(true))
-            window.location.href = '/';
+            window.location.href = '/'
+        } else {
+            setResponse(response.message)
         }
-
-        return response;
     }
-
     return (
         <Container className="flex">
             <Title>Login</Title>
-            <form className="space-y-6" action={formAction}>
-                <Input name="username" placeholder="User Name" status={response?.status == 400? false : undefined}/>    
-                <Input type="password" name="password" placeholder="password" message={response?.message} status={response?.status == 400? false : undefined}/>
+            <form className="space-y-6" onSubmit={handleSubmit((params: any) => requestLogin(params))}>
+                <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 
+                    message={errors.username?.message?.toString()}
+                    status={errors.username == undefined? undefined : false}/>    
+                <Input type="password" placeholder="password" inputRef={register('password').ref} {...register('password')} 
+                    message={errors.password?.message?.toString()}
+                    status={errors.password == undefined? undefined : false} />
+                    
+                <p>{response}</p>
                 <Button type="submit" className="w-full">Login</Button>
                 <div className="text-sm font-medium">
                     Not registered? <a href="/account/join" className="text-blue-700 hover:underline dark:text-blue-500">Create account</a>

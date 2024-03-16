@@ -12,13 +12,14 @@ const client = axios.create({
     withCredentials: true,
 })
 
-const UserSchema = z.object({
+export const UserSchema = z.object({
     username: z.string().min(3),
     email: z.string().email(),
     password: z.string().min(3)
 });
 
-const LoginSchema = UserSchema.omit({ email: true });
+export const LoginSchema = UserSchema.omit({ email: true });
+export type loginObject = z.infer<typeof LoginSchema>;
 
 const JoinSchema = UserSchema.extend({
     password_check: z.string().min(3)
@@ -72,20 +73,12 @@ export async function join(formData: FormData): Promise<ServerResponse> {
     }
 }
 
-export async function login(formData: FormData): Promise<ServerResponse>{
-    const { username, password } = LoginSchema.parse({
-        username: formData.get('username'),
-        password: formData.get('password')
-    });
-
+export async function login(object: loginObject): Promise<ServerResponse>{
     try {
         const response = await client({
             method: 'post',
             url: '/account/login',
-            data: {
-                username: username,
-                password: password
-            }
+            data: object
         });
 
         return {
