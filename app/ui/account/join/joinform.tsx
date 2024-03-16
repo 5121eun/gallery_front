@@ -1,36 +1,53 @@
 "use client"
 
+import { useRouter } from 'next/navigation';
 import Button from "@/app/ui/button";
 import Input from "@/app/ui/input";
-
-import { useFormState } from "react-dom";
-import { join } from "@/app/lib/actions";
-import { redirect } from "next/navigation";
-import { ServerResponse } from "@/app/lib/definitions";
+import { useForm } from 'react-hook-form';
+import { JoinSchema, join, joinObject } from "@/app/lib/actions";
 import Container from "@/app/ui/container";
 import Title from "../../title";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 export default function JoinForm() {
-    const [ response, formAction] = useFormState(requestJoin, null);
+    const router = useRouter()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm({
+        resolver: zodResolver(JoinSchema),
+      });
+      const [ response, setResponse ] = useState("")
 
-    async function requestJoin(state: any, formData: FormData): Promise<ServerResponse> {
-        const response = await join(formData);
+    async function requestJoin(object: joinObject) {
+        const response = await join(object);
         
         if (response?.status == 201) {
-            redirect("/account/login");
+            router.push("/account/login")
+        } else {
+            setResponse(response.message)
         }
-
-        return response;
     }
 
     return (
         <Container>
             <Title>Join</Title>
-            <form action={formAction}>
-                <Input name="username" placeholder="User Name" message={response == null? "사용자 이름을 3자 이상 입력해 주세요." : response?.message} status={response != null? false : undefined} />
-                <Input type="email" name="email" placeholder="email" message="Email 주소를 입력해 주세요."/>
-                <Input type="password" name="password" placeholder="password" message="사용하실 비밀번호를 입력해 주세요."/>
-                <Input type="password" name="password_check" placeholder="password check" message="비밀번호를 다시 입력해 주세요."/>
+            <form onSubmit={handleSubmit((params: any) => requestJoin(params))}>
+                <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 
+                    message={errors.username == undefined? "사용자 이름을 입력해 주세요.":errors.username?.message?.toString()}
+                    status={errors.username == undefined? undefined : false} />
+                <Input type="email" placeholder="email" inputRef={register('email').ref} {...register('email')} 
+                    message={errors.email == undefined? "사용하실 이메일 주소를 입력해 주세요.":errors.email?.message?.toString()}
+                    status={errors.email == undefined? undefined : false}/>
+                <Input type="password" placeholder="password" inputRef={register('password').ref} {...register('password')} 
+                    message={errors.password == undefined? "사용하실 패스워드를 입력해 주세요.":errors.password?.message?.toString()}
+                    status={errors.password == undefined? undefined : false}/>
+                <Input type="password" placeholder="password check" inputRef={register('password_check').ref} {...register('password_check')} 
+                    message={errors.password_check == undefined? "패스워드를 한번 더 입력해 주세요.":errors.password_check?.message?.toString()}
+                    status={errors.password_check == undefined? undefined : false}/>
+                <p>{response}</p>
                 <Button type="submit" className="w-full">Join</Button>
             </form>
         </Container>

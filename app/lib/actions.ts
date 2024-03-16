@@ -21,34 +21,28 @@ export const UserSchema = z.object({
 export const LoginSchema = UserSchema.omit({ email: true });
 export type loginObject = z.infer<typeof LoginSchema>;
 
-const JoinSchema = UserSchema.extend({
+export const JoinSchema = UserSchema.extend({
     password_check: z.string().min(3)
 }).refine((value) => {
-    return value.password == value.password_check
+    return value.password === value.password_check
 }, {
     message: "password not same",
     path: [
         "password_check"
     ]
 })
+export type joinObject = z.infer<typeof JoinSchema>;
 
-export async function join(formData: FormData): Promise<ServerResponse> {
+export async function join(object: joinObject): Promise<ServerResponse> {
     
     try {
-        const { username, email, password, password_check } = JoinSchema.parse({
-            username: formData.get('username'),
-            email: formData.get('email'),
-            password: formData.get('password'),
-            password_check: formData.get('password_check')
-        });
-
         const response = await client({
             method: 'post',
             url: '/account/users/',
             data: {
-                username: username,
-                email: email,
-                password: password
+                username: object.username,
+                email: object.email,
+                password: object.password
             }
         });
 
