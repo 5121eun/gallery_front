@@ -36,6 +36,7 @@
 - [MainPage](https://github.com/5121eun/gallery_front/blob/main/app/page.tsx) - 로딩 스켈레톤 구현
 - [Search](https://github.com/5121eun/gallery_front/blob/main/app/ui/search.tsx) - 검색 기능 및 자동 완성 기능 구현
 - [Gallery](https://github.com/5121eun/gallery_front/blob/main/app/ui/gallery.tsx) - 그리드 레이아웃 및 페이지 크기에 따른 맞춤형 갤러리 배치 구현
+<br/>
 
 - [PostDetailPage](https://github.com/5121eun/gallery_front/blob/main/app/post/%5Bid%5D/detail/page.tsx) - 로딩 스켈레톤 구현
 - [PostDetailForm](https://github.com/5121eun/gallery_front/blob/main/app/ui/post/detail/post-detail-form.tsx)
