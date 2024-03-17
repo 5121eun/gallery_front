@@ -54,7 +54,7 @@ export default function Search() {
     }
 
     return (
-            <div className="w-10/12 focus-within relative" 
+            <div className="w-11/12 focus-within relative" 
             onBlur={offFocus} tabIndex={1}>
                 <div className="relative w-full">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
