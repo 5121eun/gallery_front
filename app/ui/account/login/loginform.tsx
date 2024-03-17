@@ -32,7 +32,7 @@ export default function LoginForm() {
         }
     }
     return (
-        <Container className="flex w-96">
+        <Container className="flex w-450">
             <Title>Login</Title>
             <form className="space-y-6 w-full" onSubmit={handleSubmit((params: any) => requestLogin(params))}>
                 <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 

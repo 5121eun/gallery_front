@@ -32,7 +32,7 @@ export default function JoinForm() {
     }
 
     return (
-        <Container className='flex w-96'>
+        <Container className='flex w-450'>
             <Title>Join</Title>
             <form className="w-full" onSubmit={handleSubmit((params: any) => requestJoin(params))}>
                 <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 
