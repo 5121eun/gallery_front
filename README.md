@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gallery
+## 설명
+사진 공유 사이트
 
-## Getting Started
+## 사용 툴
+- Next.js
+- Django
 
-First, run the development server:
+## 주요기능
+### 회원가입
+![join](https://github.com/5121eun/gallery_front/assets/121006954/b9315323-65c8-4f68-8d02-2fe487be7514)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 로그인
+![login](https://github.com/5121eun/gallery_front/assets/121006954/21f27af5-94d2-437f-9153-03e6a78c332a)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 글 작성
+![create](https://github.com/5121eun/gallery_front/assets/121006954/5f1dc5e0-fd53-41c5-a6e6-737aea684652)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 글 조회
+![show](https://github.com/5121eun/gallery_front/assets/121006954/a85fabf4-933f-4282-84ab-165e87d22049)
