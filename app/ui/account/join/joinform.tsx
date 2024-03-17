@@ -32,9 +32,9 @@ export default function JoinForm() {
     }
 
     return (
-        <Container>
+        <Container className='flex w-96'>
             <Title>Join</Title>
-            <form onSubmit={handleSubmit((params: any) => requestJoin(params))}>
+            <form className="w-full" onSubmit={handleSubmit((params: any) => requestJoin(params))}>
                 <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 
                     message={errors.username == undefined? "사용자 이름을 입력해 주세요.":errors.username?.message?.toString()}
                     status={errors.username == undefined? undefined : false} />
