@@ -9,7 +9,7 @@ interface CardProps  {
 export default function Card({ post } : CardProps) {
     return (
       <Link
-        className='relative aspect-[5/3]'
+        className='relative aspect-[6/4]'
         href={`/post/${post.id}/detail`}>
         <Image 
             fill
