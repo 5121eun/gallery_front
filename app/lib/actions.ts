@@ -4,8 +4,10 @@ import { Post, ServerResponse } from './definitions';
 import { z } from 'zod';
 import qs from 'qs';
 
+export const API_SERVER = 'http://127.0.0.1:8000'
+
 const client = axios.create({
-    baseURL:'http://127.0.0.1:8000',
+    baseURL:API_SERVER,
     xsrfCookieName: 'csrftoken',
     xsrfHeaderName: 'X-CSRFToken',
     withXSRFToken: true,
@@ -136,7 +138,8 @@ export async function getPosts(page: number, tags: string | undefined): Promise<
                 return qs.stringify(param, { arrayFormat: 'repeat' })
             }
         });
-        
+        // await new Promise((resolve) => setTimeout(resolve, 10000));
+
         return response.data.results;
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
