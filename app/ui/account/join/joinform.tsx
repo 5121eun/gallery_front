@@ -35,7 +35,7 @@ export default function JoinForm() {
     return (
         <Container className='flex w-450'>
             <Title>{JOIN_TITLE}</Title>
-            <form className="w-full" onSubmit={handleSubmit((params: any) => requestJoin(params))}>
+            <form className="space-y-4 w-full" onSubmit={handleSubmit((params: any) => requestJoin(params))}>
                 <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 
                     message={errors.username == undefined? "사용자 이름을 입력해 주세요.":errors.username?.message?.toString()}
                     status={errors.username == undefined? undefined : false} />
@@ -46,9 +46,8 @@ export default function JoinForm() {
                     message={errors.password == undefined? "사용하실 패스워드를 입력해 주세요.":errors.password?.message?.toString()}
                     status={errors.password == undefined? undefined : false}/>
                 <Input type="password" placeholder="password check" inputRef={register('password_check').ref} {...register('password_check')} 
-                    message={errors.password_check == undefined? "패스워드를 한번 더 입력해 주세요.":errors.password_check?.message?.toString()}
+                    message={errors.password_check != undefined? String(errors.password_check.message) : response.length > 0? response : "패스워드를 한번 더 입력해 주세요."}
                     status={errors.password_check == undefined? undefined : false}/>
-                <p>{response}</p>
                 <Button type="submit" className="w-full">{JOIN_TITLE}</Button>
             </form>
         </Container>
