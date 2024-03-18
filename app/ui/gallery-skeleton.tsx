@@ -7,10 +7,10 @@ export default function GallerySkeleton() {
         for (let i = 0; i < 4; i++) {
             result.push(
                 <div key={i} className="grid gap-4">
-                    <ImageSkeleton className="h-230"/>
-                    <ImageSkeleton className="h-230"/>
-                    <ImageSkeleton className="h-230"/>
-                    <ImageSkeleton className="h-230"/>
+                    <ImageSkeleton className="aspect-[4/3]"/>
+                    <ImageSkeleton className="aspect-[4/3]"/>
+                    <ImageSkeleton className="aspect-[4/3]"/>
+                    <ImageSkeleton className="aspect-[4/3]"/>
                 </div>
             )
         }
@@ -18,7 +18,7 @@ export default function GallerySkeleton() {
     }
     
     return (
-        <div className="flex w-full min-h-full grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 m-5">
+        <div className="flex w-full grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 m-5">
             {image()}
         </div>
     )

@@ -25,7 +25,7 @@ export default async function Gallery({ page, query }: GalleryProps) {
     }
 
     return (
-        <div className="flex grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 m-5">
+        <div className="flex w-full grid gap-4 grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 m-5">
             {post_rendering(posts)}
         </div>
     )

@@ -12,9 +12,9 @@ export default function Card({ post } : CardProps) {
         href={`/post/${post.id}/detail`}>
         <Image 
             src={post.image}
-            width={560}
-            height={560}
-            className="hover:opacity-50"
+            width={400}
+            height={300}
+            className="aspect-[4/3] hover:opacity-50"
             alt="image"
             />
       </Link>

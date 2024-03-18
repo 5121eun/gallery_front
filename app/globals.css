@@ -35,6 +35,10 @@ body {
     width: 720px
   }
 
+  .w-560 {
+    width: 560px
+  }
+
   .w-450 {
     width: 450px
   }
@@ -45,6 +49,10 @@ body {
   
   .h-230 {
     height: 230px
+  }
+
+  .h-360 {
+    height: 360px
   }
 
 }
