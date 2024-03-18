@@ -1,13 +1,15 @@
-"use client"
-
+import { getPosts } from "../lib/actions";
 import Card from "./card";
 import { Post } from "@/app/lib/definitions";
 
 interface GalleryProps {
-    posts: Post[];
+    page: number;
+    query: string | undefined;
 }
 
-export default function Gallery( { posts } : GalleryProps) {
+export default async function Gallery({ page, query }: GalleryProps) {
+    const posts = await getPosts(Number(page) | 1, query);
+
     const post_rendering = (posts: Post[]) => {
         const result = [];
         for (let i = 0 ; i < 4 ; i++) {
