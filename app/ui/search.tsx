@@ -72,7 +72,7 @@ export default function Search() {
                     <button onClick={() => handleSearch(value)} className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
                 {
-                    focus && <div className="flex absolute w-full p-3 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" ref={divRef}>
+                    focus && <div className="z-10 flex absolute w-full p-3 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" ref={divRef}>
                     {all_tags.map((tag) => {
                         if (value.length == 0) {
                             return <p key={tag} className="cursor-pointer" onClick={() => {
