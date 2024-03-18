@@ -32,14 +32,18 @@ export default async function PostDetailForm({ id }: PostDetailProps){
                     <label className="w-1/12">태그:</label>
                     <Tags old_tags={post?.tags === undefined? [] : post?.tags} readonly={true}/>
                 </DivRow>
-                <Image 
-                    src={post?.image === undefined? "" : post.image}
-                    width={720}
-                    height={560}
-                    className="block"
-                    alt="image"
-                    style={{ width: '720px', height: '560px' }}
-                />
+                <div style={{ position: 'relative', width: '720px', height: '520px' }}>
+                    <Image
+                        src={post?.image === undefined? "" : post.image}
+                        alt="Picture of the author"
+                        sizes="500px"
+                        fill
+                        style={{
+                        objectFit: 'contain',
+                        }}
+                    />
+                </div>
+                    
             </Container>
 
     )
