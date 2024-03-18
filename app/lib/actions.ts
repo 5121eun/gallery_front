@@ -27,7 +27,7 @@ export const JoinSchema = UserSchema.extend({
 }).refine((value) => {
     return value.password === value.password_check
 }, {
-    message: "password not same",
+    message: "password does not match",
     path: [
         "password_check"
     ]
@@ -137,7 +137,6 @@ export async function getPosts(page: number, tags: string | undefined): Promise<
                 return qs.stringify(param, { arrayFormat: 'repeat' })
             }
         });
-        // await new Promise((resolve) => setTimeout(resolve, 10000));
 
         return response.data.results;
     } catch (error: unknown) {
