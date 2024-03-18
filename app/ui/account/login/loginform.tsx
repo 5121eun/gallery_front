@@ -35,15 +35,13 @@ export default function LoginForm() {
     return (
         <Container className="flex w-450">
             <Title>{LOGIN_TITLE}</Title>
-            <form className="space-y-6 w-full" onSubmit={handleSubmit((params: any) => requestLogin(params))}>
+            <form className="space-y-2 w-full" onSubmit={handleSubmit((params: any) => requestLogin(params))}>
                 <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 
                     message={errors.username?.message?.toString()}
                     status={errors.username == undefined? undefined : false}/>    
                 <Input type="password" placeholder="password" inputRef={register('password').ref} {...register('password')} 
-                    message={errors.password?.message?.toString()}
+                    message={errors.password != undefined? String(errors.password.message) : response.length > 0? response : undefined}
                     status={errors.password == undefined? undefined : false} />
-                    
-                <p>{response}</p>
                 <Button type="submit" className="w-full">{LOGIN_TITLE}</Button>
                 <div className="text-sm font-medium">
                     Not registered? <a href="/account/join" className="text-blue-700 hover:underline dark:text-blue-500">Create account</a>

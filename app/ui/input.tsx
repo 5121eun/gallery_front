@@ -9,7 +9,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export default function Input({ status, message, inputRef, className, ...rest}: InputProps) {
     return (
-        <div className='mt-3 mb-5'>
+        <div className=''>
             <input
                 ref={inputRef}
                 {...rest}
@@ -23,12 +23,12 @@ export default function Input({ status, message, inputRef, className, ...rest}: 
                 )}
             />
             <p id="message" className={clsx(
-                'mt-2 text-sm text-gray-500 dark:text-gray-400',
+                'flex-none mt-2 text-sm text-gray-500 dark:text-gray-400',
                 {
                     'text-green-600 dark:text-green-500': status === true,
                     'text-red-600 dark:text-red-500': status === false
                 }
-            )}>{message}</p>
+            )}>{message != undefined? message : "\u00A0"}</p>
         </div>
     )
 }
