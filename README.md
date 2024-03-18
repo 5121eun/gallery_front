@@ -18,22 +18,25 @@
 <br/>
 
 ## 주요기능
-### 회원가입  
-![join](https://github.com/5121eun/gallery_front/assets/121006954/b9315323-65c8-4f68-8d02-2fe487be7514)
+
+### 회원가입
+![join-ezgif com-video-to-gif-converter (1)](https://github.com/5121eun/gallery_front/assets/121006954/e1bedd7b-5f82-4f1a-b6ce-4001ce9367a9)
 
 - [JoinPage](https://github.com/5121eun/gallery_front/blob/main/app/account/join/page.tsx#L3)
 - [JoinForm](https://github.com/5121eun/gallery_front/blob/main/app/ui/account/join/joinform.tsx#L13) - zod를 통해 유효성 검사 후 회원가입 API 호출
 <br/>
 
-### 로그인  
-![login](https://github.com/5121eun/gallery_front/assets/121006954/21f27af5-94d2-437f-9153-03e6a78c332a)
+
+### 로그인
+![login-ezgif com-video-to-gif-converter (2)](https://github.com/5121eun/gallery_front/assets/121006954/35b277a7-3b7d-476e-be04-4918ae6bea84)
 
 - [LoginPage](https://github.com/5121eun/gallery_front/blob/main/app/account/login/page.tsx#L3)
 - [LoginForm](https://github.com/5121eun/gallery_front/blob/main/app/ui/account/login/loginform.tsx#L13) - zod를 통해 유효성 검사 후 로그인 API 호출
 <br/>
 
 ### 글 작성
-![create](https://github.com/5121eun/gallery_front/assets/121006954/5f1dc5e0-fd53-41c5-a6e6-737aea684652)
+![post-create-ezgif com-video-to-gif-converter](https://github.com/5121eun/gallery_front/assets/121006954/9914ab8d-8cca-461e-be0a-b330871923af)
+
 
 - [PostCreatePage](https://github.com/5121eun/gallery_front/blob/main/app/post/create/page.tsx#L3)
 - [PostCreatForm](https://github.com/5121eun/gallery_front/blob/main/app/ui/post/create/post-create-form.tsx#L14)
@@ -42,7 +45,7 @@
 <br/>
 
 ### 메인 페이지 및 글 조회
-![show](https://github.com/5121eun/gallery_front/assets/121006954/a85fabf4-933f-4282-84ab-165e87d22049)
+![gallery-ezgif com-video-to-gif-converter](https://github.com/5121eun/gallery_front/assets/121006954/7eb23c60-2066-45c2-81bb-b76fa7f9d72c)
 
 - [MainPage](https://github.com/5121eun/gallery_front/blob/main/app/page.tsx#L7) - 로딩 스켈레톤 구현
 - [Search](https://github.com/5121eun/gallery_front/blob/main/app/ui/search.tsx#L8) - 검색 기능 및 자동 완성 기능 구현
