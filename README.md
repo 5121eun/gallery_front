@@ -18,23 +18,24 @@
 <br/>
 
 ## 주요기능
-### 회원가입  
-![join-ezgif com-video-to-gif-converter](https://github.com/5121eun/gallery_front/assets/121006954/05fd4613-1fb9-49be-9c37-cb49245ee886)
+
+### 회원가입
+![join-ezgif com-video-to-gif-converter (1)](https://github.com/5121eun/gallery_front/assets/121006954/e1bedd7b-5f82-4f1a-b6ce-4001ce9367a9)
 
 - [JoinPage](https://github.com/5121eun/gallery_front/blob/main/app/account/join/page.tsx#L3)
 - [JoinForm](https://github.com/5121eun/gallery_front/blob/main/app/ui/account/join/joinform.tsx#L13) - zod를 통해 유효성 검사 후 회원가입 API 호출
 <br/>
 
-### 로그인  
-![login-ezgif com-video-to-gif-converter](https://github.com/5121eun/gallery_front/assets/121006954/b4e5b66e-fc8c-472f-aa9f-fa831f20f109)
 
+### 로그인
+![login-ezgif com-video-to-gif-converter (2)](https://github.com/5121eun/gallery_front/assets/121006954/35b277a7-3b7d-476e-be04-4918ae6bea84)
 
 - [LoginPage](https://github.com/5121eun/gallery_front/blob/main/app/account/login/page.tsx#L3)
 - [LoginForm](https://github.com/5121eun/gallery_front/blob/main/app/ui/account/login/loginform.tsx#L13) - zod를 통해 유효성 검사 후 로그인 API 호출
 <br/>
 
 ### 글 작성
-![post_create-ezgif com-video-to-gif-converter](https://github.com/5121eun/gallery_front/assets/121006954/1f5f9825-f993-4867-bc07-a0b01b805b80)
+![post-create-ezgif com-video-to-gif-converter](https://github.com/5121eun/gallery_front/assets/121006954/9914ab8d-8cca-461e-be0a-b330871923af)
 
 
 - [PostCreatePage](https://github.com/5121eun/gallery_front/blob/main/app/post/create/page.tsx#L3)
@@ -44,7 +45,7 @@
 <br/>
 
 ### 메인 페이지 및 글 조회
-![post_detail-ezgif com-video-to-gif-converter](https://github.com/5121eun/gallery_front/assets/121006954/17a4b5b4-8605-4bd8-9db1-b337b637bd85)
+![gallery-ezgif com-video-to-gif-converter](https://github.com/5121eun/gallery_front/assets/121006954/7eb23c60-2066-45c2-81bb-b76fa7f9d72c)
 
 - [MainPage](https://github.com/5121eun/gallery_front/blob/main/app/page.tsx#L7) - 로딩 스켈레톤 구현
 - [Search](https://github.com/5121eun/gallery_front/blob/main/app/ui/search.tsx#L8) - 검색 기능 및 자동 완성 기능 구현
