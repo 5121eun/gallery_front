@@ -9,12 +9,12 @@ interface CardProps  {
 export default function Card({ post } : CardProps) {
     return (
       <Link
+        className='relative aspect-[4/3]'
         href={`/post/${post.id}/detail`}>
         <Image 
+            fill
             src={post.image}
-            width={400}
-            height={300}
-            className="aspect-[4/3] hover:opacity-50"
+            className=" hover:opacity-50"
             alt="image"
             />
       </Link>
