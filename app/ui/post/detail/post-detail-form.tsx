@@ -1,19 +1,19 @@
-"use client"
-
 import Tags from "@/app/ui/post/tags";
-import { Post,  } from "@/app/lib/definitions";
 import Image from 'next/image'
 import Back from "@/app/ui/svg/back";
 import Edit from "@/app/ui/svg/edit";
 import Container from "@/app/ui/container";
 import DivRow from "../../div-row";
 import Title from "../../title";
+import { get_post } from "@/app/lib/actions";
 
 interface PostDetailProps {
-    post: Post | null;
+    id: string
 }
 
-export default async function PostDetailForm({ post }: PostDetailProps){
+export default async function PostDetailForm({ id }: PostDetailProps){
+    const post = await get_post(Number(id));
+
     return (
             <Container>
                     <DivRow className="justify-between">
