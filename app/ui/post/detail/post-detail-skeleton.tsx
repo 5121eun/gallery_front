@@ -15,9 +15,9 @@ export default async function PostDetailSkeleton() {
                         <Title>{POST_DETAIL_TITLE}</Title>
                         <p />
                     </DivRow>
-                    <div className="h-4 w-full bg-gray-200 rounded-full dark:bg-gray-700 mb-4"></div>
-                    <div className="h-4 w-full bg-gray-200 rounded-full dark:bg-gray-700 mb-4"></div>
-                    <ImageSkeleton className="w-720 h-520" />
+                    <div className="h-6 w-full bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                    <div className="h-6 w-full bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                    <ImageSkeleton className="w-720 h-560" />
             </Container>
     )
 }
