@@ -166,7 +166,7 @@ export async function get_post(id: number): Promise<Post|null> {
     }
 }
 
-export async function create_post(state: any, formData: FormData): Promise<ServerResponse> {
+export async function create_post(formData: FormData): Promise<ServerResponse> {
     
     try {
         const response = await client({

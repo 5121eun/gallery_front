@@ -20,7 +20,7 @@ export default function PostCreateForm(){
         formData.getAll('tags[]').map((tag, index) => {
             formData.append(`tags[${index}]`, tag)
         })
-        const response = await create_post(state, formData);
+        const response = await create_post(formData);
         
         if (response?.status == 201) {
             redirect(`/post/${response.message}/detail`)
