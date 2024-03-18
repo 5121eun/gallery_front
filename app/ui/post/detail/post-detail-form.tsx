@@ -6,6 +6,7 @@ import Container from "@/app/ui/container";
 import DivRow from "../../div-row";
 import Title from "../../title";
 import { get_post } from "@/app/lib/actions";
+import { POST_DETAIL_TITLE } from "@/app/lib/constants";
 
 interface PostDetailProps {
     id: string
@@ -18,7 +19,7 @@ export default async function PostDetailForm({ id }: PostDetailProps){
             <Container>
                     <DivRow className="justify-between">
                         <Back />
-                        <Title>Post Detail</Title>
+                        <Title>{POST_DETAIL_TITLE}</Title>
                         <Edit />
                     </DivRow>
                 {post && 

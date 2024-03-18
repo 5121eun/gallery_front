@@ -10,6 +10,7 @@ import Container from "@/app/ui/container";
 import DivRow from "@/app/ui/div-row";
 import Title from "@/app/ui/title";
 import { redirect } from "next/navigation";
+import { POST_CREATE_TITLE } from "@/app/lib/constants";
 
 export default function PostCreateForm(){
     const [ response, formAction] = useFormState(requestCreatePost, null);
@@ -31,7 +32,7 @@ export default function PostCreateForm(){
     return (
             <form action={formAction} encType="multipart/form-data">
                 <Container>
-                    <Title>Post Create</Title>
+                    <Title>{POST_CREATE_TITLE}</Title>
                     <DivRow>
                         <label className="w-1/12 text-gray-500 dark:text-gray-400">태그:</label>
                             <Tags old_tags={[]}/>

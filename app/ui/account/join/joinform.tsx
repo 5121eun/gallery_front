@@ -9,6 +9,7 @@ import Container from "@/app/ui/container";
 import Title from "../../title";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { JOIN_TITLE } from '@/app/lib/constants';
 
 export default function JoinForm() {
     const router = useRouter()
@@ -33,7 +34,7 @@ export default function JoinForm() {
 
     return (
         <Container className='flex w-450'>
-            <Title>Join</Title>
+            <Title>{JOIN_TITLE}</Title>
             <form className="w-full" onSubmit={handleSubmit((params: any) => requestJoin(params))}>
                 <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 
                     message={errors.username == undefined? "사용자 이름을 입력해 주세요.":errors.username?.message?.toString()}

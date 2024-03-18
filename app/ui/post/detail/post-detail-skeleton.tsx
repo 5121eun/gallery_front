@@ -5,13 +5,14 @@ import Container from "@/app/ui/container";
 import DivRow from "../../div-row";
 import Title from "../../title";
 import ImageSkeleton from "../../image-skeleton";
+import { POST_DETAIL_TITLE } from "@/app/lib/constants";
 
 export default async function PostDetailSkeleton() {
     return (
             <Container>
                     <DivRow className="justify-between">
                         <Back />
-                        <Title>Post Detail</Title>
+                        <Title>{POST_DETAIL_TITLE}</Title>
                         <p />
                     </DivRow>
                     <div className="h-4 w-full bg-gray-200 rounded-full dark:bg-gray-700 mb-4"></div>

@@ -1,4 +1,4 @@
-import { API_SERVER } from "@/app/lib/actions";
+import { API_SERVER, POST_DETAIL_TITLE } from "@/app/lib/constants";
 import PostDetailForm from "@/app/ui/post/detail/post-detail-form";
 import PostDetailSkeleton from "@/app/ui/post/detail/post-detail-skeleton";
 import { Metadata, ResolvingMetadata } from "next";
@@ -13,7 +13,7 @@ export async function generateMetadata(
     const post = await fetch(`${API_SERVER}/post/${id}`).then((res) => res.json())
    
     return {
-      title: 'Post Detail',
+      title: POST_DETAIL_TITLE,
       openGraph: {
         images: [post.image],
         description: post.tags

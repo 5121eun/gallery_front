@@ -8,6 +8,7 @@ import Button from "../../button";
 import Title from "../../title";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { LOGIN_TITLE } from '@/app/lib/constants';
 
 
 export default function LoginForm() {
@@ -33,7 +34,7 @@ export default function LoginForm() {
     }
     return (
         <Container className="flex w-450">
-            <Title>Login</Title>
+            <Title>{LOGIN_TITLE}</Title>
             <form className="space-y-6 w-full" onSubmit={handleSubmit((params: any) => requestLogin(params))}>
                 <Input placeholder="User Name" inputRef={register('username').ref} {...register('username')} 
                     message={errors.username?.message?.toString()}

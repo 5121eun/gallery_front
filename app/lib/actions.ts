@@ -3,8 +3,7 @@ import { Post, ServerResponse } from './definitions';
 
 import { z } from 'zod';
 import qs from 'qs';
-
-export const API_SERVER = 'http://127.0.0.1:8000'
+import { API_SERVER } from './constants';
 
 const client = axios.create({
     baseURL:API_SERVER,

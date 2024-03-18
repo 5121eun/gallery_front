@@ -3,7 +3,7 @@ import Gallery from "./ui/gallery";
 import Search from "./ui/search";
 import GallerySkeleton from "./ui/gallery-skeleton";
 import { Metadata, ResolvingMetadata } from "next";
-import { API_SERVER } from "./lib/actions";
+import { API_SERVER, TITLE } from "./lib/constants";
 
 export async function generateMetadata(
     parent: ResolvingMetadata
@@ -12,7 +12,7 @@ export async function generateMetadata(
     const post = await fetch(`${API_SERVER}/post/33`).then((res) => res.json())
    
     return {
-      title: 'Gallery',
+      title: TITLE,
       openGraph: {
         images: [post.image],
         description: 'Share your photo'
