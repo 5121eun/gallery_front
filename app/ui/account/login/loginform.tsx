@@ -44,7 +44,7 @@ export default function LoginForm() {
                     status={errors.password == undefined? undefined : false} />
                     
                 <p>{response}</p>
-                <Button type="submit" className="w-full">Login</Button>
+                <Button type="submit" className="w-full">{LOGIN_TITLE}</Button>
                 <div className="text-sm font-medium">
                     Not registered? <a href="/account/join" className="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
                 </div>

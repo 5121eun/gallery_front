@@ -49,7 +49,7 @@ export default function JoinForm() {
                     message={errors.password_check == undefined? "패스워드를 한번 더 입력해 주세요.":errors.password_check?.message?.toString()}
                     status={errors.password_check == undefined? undefined : false}/>
                 <p>{response}</p>
-                <Button type="submit" className="w-full">Join</Button>
+                <Button type="submit" className="w-full">{JOIN_TITLE}</Button>
             </form>
         </Container>
     )
