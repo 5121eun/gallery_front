@@ -62,9 +62,12 @@ export default function Search() {
                     <Button className="absolute end-2.5 bottom-2 mb-0" onClick={() => handleSearch(value)} >Search</Button>
                 </div>
                 {
+                    // input focus 시 자동완성 div 보이게
                     focus && 
                     <Container className="p-3 z-10 absolute w-full !items-start">
                         {all_tags.map((tag) => {
+                            
+                            // input value가 없으면 모든 태그, value가 있으면 그걸 포함하는 태그 리턴
                             if (value.length == 0) {
                                 return <p key={tag} className="cursor-pointer" onClick={() => {
                                     setValue(tag)
