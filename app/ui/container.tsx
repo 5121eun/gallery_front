@@ -1,7 +1,7 @@
-import clsx from 'clsx';
+import clsx from 'clsx'
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-    children: React.ReactNode;
+    children: React.ReactNode
   }
 
 export default function Container({ children, className, ...rest }: ContainerProps) {

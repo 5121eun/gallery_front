@@ -1,15 +1,15 @@
 "use client"
 
-import { useRouter } from 'next/navigation';
-import Button from "@/app/ui/button";
-import Input from "@/app/ui/input";
-import { useForm } from 'react-hook-form';
-import { JoinSchema, join, joinObject } from "@/app/lib/actions";
-import Container from "@/app/ui/container";
-import Title from "../../title";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { JOIN_TITLE } from '@/app/lib/constants';
+import { useRouter } from 'next/navigation'
+import Button from "@/app/ui/button"
+import Input from "@/app/ui/input"
+import { useForm } from 'react-hook-form'
+import { JoinSchema, join, joinObject } from "@/app/lib/actions"
+import Container from "@/app/ui/container"
+import Title from "../../title"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
+import { JOIN_TITLE } from '@/app/lib/constants'
 
 export default function JoinForm() {
     const router = useRouter()

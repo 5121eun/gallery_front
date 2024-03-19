@@ -1,11 +1,11 @@
 "use client"
 
-import { useRef, useState } from "react";
+import { useRef, useState } from "react"
 import Image from 'next/image'
 
 export default function DropZone(){
-    const [ image, setImage ] = useState<string | null>(null);
-    const inputRef = useRef<HTMLInputElement>(null);
+    const [ image, setImage ] = useState<string | null>(null)
+    const inputRef = useRef<HTMLInputElement>(null)
 
     // 이미지 드래그 앤 드롭 시 새 탭에서 보여주기 방지
     const handleDragOver = (event: React.DragEvent) => event.preventDefault()
@@ -34,11 +34,11 @@ export default function DropZone(){
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         
         if (event.currentTarget.files) {
-            const file = event.currentTarget.files[0];
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
+            const file = event.currentTarget.files[0]
+            const reader = new FileReader()
+            reader.readAsDataURL(file)
             reader.onloadend = () => {
-                setImage(reader.result as string);
+                setImage(reader.result as string)
            }
         }
     }

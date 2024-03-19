@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { SUBJECT, TITLE } from "../lib/constants";
+import Link from "next/link"
+import { SUBJECT, TITLE } from "../lib/constants"
 
 export default function Logo() {
     return (

@@ -1,9 +1,9 @@
-import Link from 'next/link';
+import Link from 'next/link'
 import Image from 'next/image'
-import { Post } from '@/app/lib/definitions';
+import { Post } from '@/app/lib/definitions'
 
 interface CardProps  {
-    post: Post;
+    post: Post
   }
 
 export default function Card({ post } : CardProps) {

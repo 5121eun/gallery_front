@@ -1,6 +1,5 @@
 import Logo from "@/app/ui/logo"
 import NavLinks from "./nav-link"
-import DivRow from "../div-row"
 
 export default function TopNav() {
     return (

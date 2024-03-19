@@ -1,11 +1,11 @@
 "use client"
 
-import Back from "@/app/ui/svg/back";
-import Container from "@/app/ui/container";
-import DivRow from "../../div-row";
-import Title from "../../title";
-import ImageSkeleton from "../../image-skeleton";
-import { POST_DETAIL_TITLE } from "@/app/lib/constants";
+import Back from "@/app/ui/svg/back"
+import Container from "@/app/ui/container"
+import DivRow from "../../div-row"
+import Title from "../../title"
+import ImageSkeleton from "../../image-skeleton"
+import { POST_DETAIL_TITLE } from "@/app/lib/constants"
 
 export default async function PostDetailSkeleton() {
     return (

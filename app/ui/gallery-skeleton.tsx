@@ -1,4 +1,4 @@
-import ImageSkeleton from "./image-skeleton";
+import ImageSkeleton from "./image-skeleton"
 
 export default function GallerySkeleton() {
     

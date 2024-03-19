@@ -1,5 +1,5 @@
-import clsx from 'clsx';
-import { RefCallback, RefObject } from 'react';
+import clsx from 'clsx'
+import { RefCallback, RefObject } from 'react'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     status?: boolean

@@ -1,14 +1,14 @@
 "use client"
 
-import { useForm } from 'react-hook-form';
-import Input from "../../input";
+import { useForm } from 'react-hook-form'
+import Input from "../../input"
 import { LoginSchema, login, loginObject } from "@/app/lib/actions"
-import Container from "../../container";
-import Button from "../../button";
-import Title from "../../title";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { LOGIN_TITLE } from '@/app/lib/constants';
+import Container from "../../container"
+import Button from "../../button"
+import Title from "../../title"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
+import { LOGIN_TITLE } from '@/app/lib/constants'
 
 
 export default function LoginForm() {

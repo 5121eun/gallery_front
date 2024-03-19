@@ -1,8 +1,8 @@
-import X from "@/app/ui/svg/x-icon";
+import X from "@/app/ui/svg/x-icon"
 
 interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
-    children: string;
-    onClick_X?: (evet: React.MouseEvent<HTMLButtonElement>) => void;
+    children: string
+    onClick_X?: (evet: React.MouseEvent<HTMLButtonElement>) => void
   }
 
 export default function Chip({ children, onClick_X, onClick }: ChipProps) {

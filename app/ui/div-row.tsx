@@ -1,5 +1,5 @@
 interface DivRowProps extends React.HTMLAttributes<HTMLDivElement> {
-    children: React.ReactNode;
+    children: React.ReactNode
 }
 
 export default function DivRow({ children, className }: DivRowProps) {

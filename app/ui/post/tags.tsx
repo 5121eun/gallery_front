@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useRef, useEffect, ChangeEvent } from "react";
-import Chip from "./chip";
-import { get_tags } from "@/app/lib/actions";
-import DivRow from "../div-row";
+import { useState, useRef, useEffect } from "react"
+import Chip from "./chip"
+import { get_tags } from "@/app/lib/actions"
+import DivRow from "../div-row"
 
 interface TagsProps {
     old_tags: string[],
@@ -20,7 +20,7 @@ export default function Tags({ old_tags, readonly }: TagsProps) {
     const [ focus, setFocus ] = useState(false)
 
     useEffect(() => {
-        requestTags();
+        requestTags()
     }, [])
 
     // 태그리스트 api 호출
@@ -45,7 +45,7 @@ export default function Tags({ old_tags, readonly }: TagsProps) {
         new_tags.splice(index, 1);
         setTags([
             ...new_tags
-        ]);
+        ])
     }
 
     // chip click 시
