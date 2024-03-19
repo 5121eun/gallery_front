@@ -4,6 +4,7 @@ import { get_tags } from "@/app/lib/actions"
 import { useEffect, useState } from "react"
 import SearchIcon from "./svg/search-icon"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import Button from "./commons/button"
 
 export default function Search() {
     const [ all_tags, setAllTags ] = useState<string[]>([])
@@ -57,7 +58,7 @@ export default function Search() {
                         onBlur={handleOffFocus}
                         defaultValue={searchParams.get('query')?.toString()}
                          />
-                    <button onClick={() => handleSearch(value)} className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                    <Button className="absolute end-2.5 bottom-2 mb-0" onClick={() => handleSearch(value)} >Search</Button>
                 </div>
                 {
                     focus && 
