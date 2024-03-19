@@ -15,13 +15,16 @@ import { POST_CREATE_TITLE } from "@/app/lib/constants"
 export default function PostCreateForm(){
     const [ response, formAction] = useFormState(requestCreatePost, null)
 
+    // post 업로드 API 호출
     async function requestCreatePost(state: any, formData: FormData): Promise<ServerResponse>{
         
+        // form의 tags[] value 모두 가져와서 배열로 전달
         formData.getAll('tags[]').map((tag, index) => {
             formData.append(`tags[${index}]`, tag)
         })
         const response = await create_post(formData)
         
+        // 업로드 성공 시 post detail 페이지로 리다이렉트
         if (response?.status == 201) {
             redirect(`/post/${response.message}/detail`)
         }
