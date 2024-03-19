@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react"
 import Chip from "./chip"
 import { get_tags } from "@/app/lib/actions"
-import DivRow from "../div-row"
+import DivRow from "@/app/ui/commons/div-row"
 
 interface TagsProps {
     old_tags: string[],

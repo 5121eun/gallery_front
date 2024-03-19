@@ -1,4 +1,4 @@
-import { getPosts } from "../lib/actions"
+import { getPosts } from "@/app/lib/actions"
 import Card from "./card"
 import { Post } from "@/app/lib/definitions"
 

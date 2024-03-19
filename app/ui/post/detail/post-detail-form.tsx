@@ -1,9 +1,9 @@
-import Tags from "@/app/ui/post/tags"
+import Tags from "@/app/ui/commons/tags"
 import Image from 'next/image'
 import Back from "@/app/ui/svg/back"
-import Container from "@/app/ui/container"
-import DivRow from "@/app/ui/div-row"
-import Title from "@/app/ui/title"
+import Container from "@/app/ui/commons/container"
+import DivRow from "@/app/ui/commons/div-row"
+import Title from "@/app/ui/commons/title"
 import { get_post } from "@/app/lib/actions"
 import { POST_DETAIL_TITLE } from "@/app/lib/constants"
 

@@ -1,11 +1,11 @@
 "use client"
 
 import { useForm } from 'react-hook-form'
-import Input from "@/app/ui/input"
+import Input from "@/app/ui/commons/input"
 import { LoginSchema, login, loginObject } from "@/app/lib/actions"
-import Container from "@/app/ui/container"
-import Button from "@/app/ui/button"
-import Title from "@/app/ui/title"
+import Container from "@/app/ui/commons/container"
+import Button from "@/app/ui/commons/button"
+import Title from "@/app/ui/commons/title"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { LOCAL_STORAGE_LOGIN_CHECK, LOGIN_TITLE } from '@/app/lib/constants'

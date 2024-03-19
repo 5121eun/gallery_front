@@ -1,7 +1,7 @@
 import Back from "@/app/ui/svg/back"
-import Container from "@/app/ui/container"
-import DivRow from "@/app/ui/div-row"
-import Title from "@/app/ui/title"
+import Container from "@/app/ui/commons/container"
+import DivRow from "@/app/ui/commons/div-row"
+import Title from "@/app/ui/commons/title"
 import ImageSkeleton from "@/app/ui/image-skeleton"
 import { POST_DETAIL_TITLE } from "@/app/lib/constants"
 
