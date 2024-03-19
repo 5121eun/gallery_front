@@ -1,12 +1,11 @@
-import { API_SERVER, POST_DETAIL_TITLE } from "@/app/lib/constants";
-import PostDetailForm from "@/app/ui/post/detail/post-detail-form";
-import PostDetailSkeleton from "@/app/ui/post/detail/post-detail-skeleton";
-import { Metadata, ResolvingMetadata } from "next";
-import { Suspense } from "react";
+import { API_SERVER, POST_DETAIL_TITLE } from "@/app/lib/constants"
+import PostDetailForm from "@/app/ui/post/detail/post-detail-form"
+import PostDetailSkeleton from "@/app/ui/post/detail/post-detail-skeleton"
+import { Metadata, ResolvingMetadata } from "next"
+import { Suspense } from "react"
 
 export async function generateMetadata(
     { params }: { params: {id: string} },
-    parent: ResolvingMetadata
   ): Promise<Metadata> {
 
     const id = params.id
@@ -22,7 +21,6 @@ export async function generateMetadata(
   }
 
 export default async  function Page({ params }: { params: {id: string} }) {
-
     return (
         <main className="flex justify-center">
             <Suspense fallback={<PostDetailSkeleton />}>
