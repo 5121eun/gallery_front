@@ -1,53 +1,48 @@
 "use client"
 
-import { get_tags } from "@/app/lib/actions";
-import { useEffect, useRef, useState } from "react";
-import SearchIcon from "./svg/search-icon";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { get_tags } from "@/app/lib/actions"
+import { useEffect, useState } from "react"
+import SearchIcon from "./svg/search-icon"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 export default function Search() {
     const [ all_tags, setAllTags ] = useState<string[]>([])
     const [ focus, setFocus ] = useState(false)
     const [ value, setValue ] = useState("")
 
-    const searchParams = useSearchParams();
-    const pathname = usePathname();
-    const { replace } = useRouter();
-
-    const divRef = useRef<HTMLInputElement>(null);
-
-    function handleSearch(value: string) {
-        const params = new URLSearchParams(searchParams);
-        if (value) {
-          params.set('query', value);
-        } else {
-          params.delete('query');
-        }
-        replace(`${pathname}?${params.toString()}`);
-    }
+    const searchParams = useSearchParams()
+    const pathname = usePathname()
+    const { replace } = useRouter()
 
     useEffect(() => {
-        requestTags();
+        requestTags()
     }, [])
 
+    // 태그리스트 api 호출
     async function requestTags() {
-        let new_all_tags = await get_tags();
-        setAllTags(new_all_tags)
+        setAllTags(await get_tags())
     }
 
-    function onFocus () {
-        setFocus(true)
-    }
+    // input 태그 focus 시 자동완성 div 보이게
+    const handleOnFocus = () => setFocus(true)
 
-    function offFocus() {
-        setTimeout(() => {
-            setFocus(false)
-        }, 100)
+    // input 태그 blur 시 자동완성 div 안 보이게
+    // 바로 focus false 하면 클릭이 안돼서 100ms 후 false
+    const handleOffFocus = () => setTimeout(() => { setFocus(false) }, 100)
+
+    // input의 value 검색 결과 page로 이동
+    function handleSearch(value: string) {
+        const params = new URLSearchParams(searchParams)
+        if (value) {
+          params.set('query', value)
+        } else {
+          params.delete('query')
+        }
+        replace(`${pathname}?${params.toString()}`)
     }
 
     return (
-            <div className="w-full focus-within relative" 
-            onBlur={offFocus} tabIndex={1}>
+            <div className="w-full relative">
                 <div className="relative w-full">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                         <SearchIcon />
@@ -58,27 +53,29 @@ export default function Search() {
                         placeholder="Search Tags,.."  
                         value={value} 
                         onChange={(e) => setValue(e.target.value)} 
-                        onFocus={onFocus}
+                        onFocus={handleOnFocus}
+                        onBlur={handleOffFocus}
                         defaultValue={searchParams.get('query')?.toString()}
                          />
                     <button onClick={() => handleSearch(value)} className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
                 {
-                    focus && <div className="z-10 flex absolute w-full p-3 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" ref={divRef}>
-                    {all_tags.map((tag) => {
-                        if (value.length == 0) {
-                            return <p key={tag} className="cursor-pointer" onClick={() => {
-                                setValue(tag)
-                                handleSearch(tag)
-                            }}># {tag}</p>
-                        } else if(tag.includes(value)) {
-                            return <p key={tag} className="cursor-pointer" onClick={() => {
-                                setValue(tag)
-                                handleSearch(tag)
-                            }}># {tag}</p>
-                        }
-                    })}
-                </div>
+                    focus && 
+                    <div className="z-10 flex absolute w-full p-3 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        {all_tags.map((tag) => {
+                            if (value.length == 0) {
+                                return <p key={tag} className="cursor-pointer" onClick={() => {
+                                    setValue(tag)
+                                    handleSearch(tag)
+                                }}># {tag}</p>
+                            } else if(tag.includes(value)) {
+                                return <p key={tag} className="cursor-pointer" onClick={() => {
+                                    setValue(tag)
+                                    handleSearch(tag)
+                                }}># {tag}</p>
+                            }
+                        })}
+                    </div>
                 }
             </div>
     )
