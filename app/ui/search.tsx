@@ -36,19 +36,11 @@ export default function Search() {
     }
 
     function onFocus () {
-        if (divRef?.current) {
-            divRef.current.style.visibility = "visible";
-            
-        }
         setFocus(true)
     }
 
     function offFocus() {
         setTimeout(() => {
-            if (divRef?.current) {
-                divRef.current.style.visibility = "hidden";
-                
-            }
             setFocus(false)
         }, 100)
     }

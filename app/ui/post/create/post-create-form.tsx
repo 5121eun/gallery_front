@@ -30,16 +30,16 @@ export default function PostCreateForm(){
     }
 
     return (
-            <form action={formAction} encType="multipart/form-data">
-                <Container>
-                    <Title>{POST_CREATE_TITLE}</Title>
-                    <DivRow>
-                        <label className="w-1/12 text-gray-500 dark:text-gray-400">태그:</label>
-                            <Tags old_tags={[]}/>
-                    </DivRow>
-                    <DropZone />
-                    <Button className="w-full" type="submit">업로드</Button>
-                </Container>
-            </form>
+        <form action={formAction} encType="multipart/form-data">
+            <Container>
+                <Title>{POST_CREATE_TITLE}</Title>
+                <DivRow>
+                    <label className="w-1/12">태그:</label>
+                    <Tags old_tags={[]}/>
+                </DivRow>
+                <DropZone />
+                <Button className="w-full" type="submit">업로드</Button>
+            </Container>
+        </form>
     )
 }
