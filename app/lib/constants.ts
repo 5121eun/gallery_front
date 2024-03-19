@@ -1,5 +1,17 @@
-export const API_SERVER = 'http://127.0.0.1:8000'
 
+/////////////////////// API ///////////////////////
+export const API_SERVER = "http://127.0.0.1:8000"
+export const LOGIN_API_PATH = "/account/login"
+export const JOIN_API_PATH = "/account/users/"
+export const LOGOUT_API_PATH = "/account/logout"
+export const POST_API_PATH = "/post/"
+export const POST_DETAIL_API_PATH = (id: number) => `/post/${id}/`
+export const TAG_API_PATH = "/post/get_all_tags/"
+
+export const GET = "get"
+export const POST = "post"
+
+/////////////////////// UI ///////////////////////
 export const TITLE = "Gallery"
 export const SUBJECT = "Share your photos"
 
