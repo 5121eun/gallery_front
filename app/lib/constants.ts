@@ -19,3 +19,6 @@ export const JOIN_TITLE = "Join"
 export const LOGIN_TITLE = "Login"
 export const POST_DETAIL_TITLE = "Post Detail"
 export const POST_CREATE_TITLE = "Post Create"
+
+/////////////////////// OTHER ///////////////////////
+export const LOCAL_STORAGE_LOGIN_CHECK = "login"

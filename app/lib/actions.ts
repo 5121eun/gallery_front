@@ -109,9 +109,7 @@ export async function logout(): Promise<ServerResponse>{
         const response = await client({
             method: GET,
             url: LOGOUT_API_PATH,
-        });
-
-        localStorage.removeItem("login")
+        })
 
         return {
             message: response.data,

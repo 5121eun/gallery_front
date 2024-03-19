@@ -8,7 +8,7 @@ import Button from "../../button"
 import Title from "../../title"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
-import { LOGIN_TITLE } from '@/app/lib/constants'
+import { LOCAL_STORAGE_LOGIN_CHECK, LOGIN_TITLE } from '@/app/lib/constants'
 
 
 export default function LoginForm() {
@@ -26,7 +26,7 @@ export default function LoginForm() {
         const response = await login(params);
         
         if (response?.status == 200) {
-            localStorage.setItem("login", String(true))
+            localStorage.setItem(LOCAL_STORAGE_LOGIN_CHECK, String(true))
             window.location.href = '/'
         } else {
             setResponse(response.message)
