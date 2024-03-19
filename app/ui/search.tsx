@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import SearchIcon from "./svg/search-icon"
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
 import Button from "./commons/button"
+import Container from "./commons/container"
 
 export default function Search() {
     const [ all_tags, setAllTags ] = useState<string[]>([])
@@ -62,7 +63,7 @@ export default function Search() {
                 </div>
                 {
                     focus && 
-                    <div className="z-10 flex absolute w-full p-3 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <Container className="p-3 z-10 absolute w-full !items-start">
                         {all_tags.map((tag) => {
                             if (value.length == 0) {
                                 return <p key={tag} className="cursor-pointer" onClick={() => {
@@ -76,7 +77,7 @@ export default function Search() {
                                 }}># {tag}</p>
                             }
                         })}
-                    </div>
+                    </Container>
                 }
             </div>
     )

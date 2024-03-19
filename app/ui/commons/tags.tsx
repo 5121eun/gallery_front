@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import Chip from "./chip"
 import { get_tags } from "@/app/lib/actions"
 import DivRow from "@/app/ui/commons/div-row"
+import Container from "./container"
 
 interface TagsProps {
     old_tags: string[],
@@ -98,7 +99,7 @@ export default function Tags({ old_tags, readonly }: TagsProps) {
            {
                 // input focus 시 자동완성 div 보이게
                 focus && 
-                <div className="z-10 flex absolute w-full p-3 flex-col space-y-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <Container className="p-3 z-10 absolute w-full !items-start">
                 {
                     //input에 value가 있고 기존 태그에 없으면 태그 생성 보이게
                     value.length > 0 && !all_tags.includes(value) &&
@@ -122,7 +123,7 @@ export default function Tags({ old_tags, readonly }: TagsProps) {
                             }
                         }
                  })}
-                </div>
+                </Container>
             }
         </div>
     )
