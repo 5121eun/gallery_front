@@ -1,14 +1,14 @@
-import { Suspense, } from "react";
-import Gallery from "./ui/gallery";
-import Search from "./ui/search";
-import GallerySkeleton from "./ui/gallery-skeleton";
-import { Metadata, ResolvingMetadata } from "next";
-import { API_SERVER, TITLE } from "./lib/constants";
+import { Suspense, } from "react"
+import Gallery from "./ui/gallery"
+import Search from "./ui/search"
+import GallerySkeleton from "./ui/gallery-skeleton"
+import { Metadata } from "next"
+import { API_SERVER, TITLE } from "./lib/constants"
 
 export async function generateMetadata(
-    parent: ResolvingMetadata
   ): Promise<Metadata> {
 
+    // post api 호출
     const post = await fetch(`${API_SERVER}/post/33`).then((res) => res.json())
    
     return {
@@ -20,15 +20,7 @@ export async function generateMetadata(
     }
   }
   
-export default async function Home({
-    searchParams,
-}: {
-    searchParams?:{
-        query?: string;
-        page?: string;
-    }
-}) {
-    
+export default async function Home({ searchParams }: { searchParams?: { query?: string; page?: string; }}) {
     return (
         <main className="flex flex-col space-y-5 items-center">
             <Search />
