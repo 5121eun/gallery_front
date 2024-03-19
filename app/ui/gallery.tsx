@@ -8,6 +8,7 @@ interface GalleryProps {
 }
 
 export default async function Gallery({ page, query }: GalleryProps) {
+    // post 리스트 api 호출
     const posts = await getPosts(Number(page) | 1, query)
 
     // posts 그리드 layout으로 배치
