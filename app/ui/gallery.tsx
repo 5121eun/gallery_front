@@ -1,6 +1,6 @@
-import { getPosts } from "../lib/actions";
-import Card from "./card";
-import { Post } from "@/app/lib/definitions";
+import { getPosts } from "../lib/actions"
+import Card from "./card"
+import { Post } from "@/app/lib/definitions"
 
 interface GalleryProps {
     page: number;
@@ -8,20 +8,22 @@ interface GalleryProps {
 }
 
 export default async function Gallery({ page, query }: GalleryProps) {
-    const posts = await getPosts(Number(page) | 1, query);
+    const posts = await getPosts(Number(page) | 1, query)
 
+    // posts 그리드 layout으로 배치
     const post_rendering = (posts: Post[]) => {
-        const result = [];
+        const result = []
         for (let i = 0 ; i < 4 ; i++) {
-            result.push(<div key={i} className="grid gap-4">
-                {posts.slice(i * 4, (i * 4) + 4).map((post) => {
-                    return (
-                        <Card key={post.id}  post={post} />
-                    )
-                })}
-            </div>);
+            result.push(
+                <div key={i} className="grid gap-4">
+                    {posts.slice(i * 4, (i * 4) + 4).map((post) => {
+                        return (
+                            <Card key={post.id}  post={post} />
+                        )
+                    })}
+                </div>)
         }
-        return result;
+        return result
     }
 
     return (
